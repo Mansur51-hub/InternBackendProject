@@ -51,6 +51,10 @@ date date not null
 
 ![image](https://user-images.githubusercontent.com/72014699/202286101-57675495-0e7b-4c1e-b0e6-0104af537bec.png)
 
+Зарезервировать данные:
+![image](https://user-images.githubusercontent.com/72014699/202287489-6b4eba01-39b6-4be7-95c8-e5df03729877.png)
+
+
 
 
 

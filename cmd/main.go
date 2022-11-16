@@ -1,7 +1,8 @@
 package main
 
 import (
-	Models "Microservice/Models"
+	"Microservice/Models"
+	"Microservice/Repository"
 	"database/sql"
 	"encoding/json"
 	"fmt"
@@ -9,6 +10,7 @@ import (
 	"github.com/gorilla/mux"
 	"io"
 	"net/http"
+	"strconv"
 )
 
 var db *sql.DB
@@ -30,7 +32,6 @@ func main() {
 
 func topUpBalance(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	stmt, err := db.Prepare("INSERT INTO users(id, balance) VALUES(?, ?)")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -45,24 +46,12 @@ func topUpBalance(w http.ResponseWriter, r *http.Request) {
 	id := keyVal["id"]
 	balance := keyVal["balance"]
 
-	if !userExists(id) {
-		fmt.Println("add user")
-		_, err = stmt.Exec(id, balance)
+	myrep := Repository.NewRepository(db)
 
-		if err != nil {
-			panic(err.Error())
-		}
-	} else {
-		_, err = db.Query("update users set balance = balance + ? where id = ?", balance, id)
+	idInt, err := strconv.Atoi(id)
+	balanceFloat, err := strconv.ParseFloat(balance, 32)
+	myrep.TopUpBalance(idInt, float32(balanceFloat))
 
-		if err != nil {
-			panic(err.Error())
-		}
-	}
-
-	stmt.Close()
-
-	fmt.Fprintf(w, "New user was addedd")
 }
 
 func getBalance(w http.ResponseWriter, r *http.Request) {
@@ -82,42 +71,23 @@ func getBalance(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("3")
 
-	if userExists(id) {
-		resp, err := db.Query("select * from users where id = ?", id)
+	resp, err := db.Query("select * from users where id = ?", id)
 
+	if err != nil {
+		panic(err.Error())
+	}
+
+	defer resp.Close()
+
+	var user Models.User
+
+	for resp.Next() {
+		err := resp.Scan(&user.Id, &user.Amount)
 		if err != nil {
 			panic(err.Error())
 		}
-
-		defer resp.Close()
-
-		var user Models.User
-
-		for resp.Next() {
-			err := resp.Scan(&user.Id, &user.Amount)
-			if err != nil {
-				panic(err.Error())
-			}
-		}
-
-		json.NewEncoder(w).Encode(user)
-
-	} else {
-		fmt.Fprintf(w, "User was not found")
-		json.NewEncoder(w).Encode(Models.User{})
 	}
 
-}
+	json.NewEncoder(w).Encode(user)
 
-func userExists(id string) bool {
-	resp, err := db.Query("select * from users where id = ?", id)
-	if err == sql.ErrNoRows {
-		return false
-	} else if err != nil {
-		fmt.Println("Db does not response correctly")
-		return false
-	}
-	defer resp.Close()
-
-	return resp.Next()
 }

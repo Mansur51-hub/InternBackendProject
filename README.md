@@ -45,15 +45,16 @@ date date not null
 
 Получить баланс пользователя:
 
-![image](https://user-images.githubusercontent.com/72014699/202283550-48a9035d-590d-4a84-85f6-ce449de8016c.png)
+![image](https://user-images.githubusercontent.com/72014699/202284270-f72f2e57-1d6d-4e58-8f1a-699451a3e5e7.png)
 
 Пополнить баланс:
 
-![image](https://user-images.githubusercontent.com/72014699/202283670-e2ebeac1-cc1c-411d-aff7-a3e142efda94.png)
+![image](https://user-images.githubusercontent.com/72014699/202284423-fff7e206-7f6e-4192-b3fe-68faaf8af36e.png)
 
 Смотрим, что в таблице:
 
-![image](https://user-images.githubusercontent.com/72014699/202283829-98b398a5-a74b-42bc-ba3e-64122a761371.png)
+![image](https://user-images.githubusercontent.com/72014699/202284531-747334aa-c535-4306-a04a-aa790c148982.png)
+
 
 
 

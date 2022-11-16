@@ -6,7 +6,7 @@ import (
 )
 
 type Repository interface {
-	TopUpBalance(id int, balance float32) error
+	TopUpBalance(id int, balance float32) (Models.User, error)
 	ReserveAmount(orderId int, userId int, serviceId int, amount float32) error
 	WriteOffFromTheReserveMoney(orderId int) error
 	GetBalance(id int) (Models.User, error)

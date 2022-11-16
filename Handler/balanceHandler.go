@@ -35,12 +35,14 @@ func (h *Handler) TopUpBalance(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "Error input values")
 	}
 
-	err = h.service.TopUpMoney(idInt, float32(balanceFloat))
+	user, err := h.service.TopUpMoney(idInt, float32(balanceFloat))
 
 	if err != nil {
 		w.WriteHeader(500)
 		fmt.Fprint(w, err)
 	}
+
+	json.NewEncoder(w).Encode(user)
 }
 
 func (h *Handler) GetBalance(w http.ResponseWriter, r *http.Request) {

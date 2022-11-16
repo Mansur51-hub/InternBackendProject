@@ -14,7 +14,7 @@ func NewMyOperationsService(repository *Repository.RepositoryMySql) *MyOperation
 	return &MyOperationsService{repository}
 }
 
-func (myService *MyOperationsService) TopUpMoney(id int, balance float32) error {
+func (myService *MyOperationsService) TopUpMoney(id int, balance float32) (Models.User, error) {
 	return myService.repository.TopUpBalance(id, balance)
 }
 

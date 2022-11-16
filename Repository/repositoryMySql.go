@@ -15,35 +15,41 @@ func NewRepositoryMySql(db *sql.DB) *RepositoryMySql {
 	return &RepositoryMySql{db}
 }
 
-func (repository *RepositoryMySql) TopUpBalance(id int, balance float32) error {
+func (repository *RepositoryMySql) TopUpBalance(id int, balance float32) (Models.User, error) {
 	stmt, err := repository.db.Prepare("INSERT INTO users(id, balance) VALUES(?, ?)")
 	if err != nil {
-		return err
+		return Models.User{}, err
 	}
 
 	exists, err := repository.UserExists(id)
 
 	if err != nil {
-		return err
+		return Models.User{}, err
 	}
 
 	if !exists {
 		_, err = stmt.Exec(id, balance)
 
 		if err != nil {
-			return err
+			return Models.User{}, err
 		}
 	} else {
 		_, err = repository.db.Query("update users set balance = balance + ? where id = ?", balance, id)
 
 		if err != nil {
-			return err
+			return Models.User{}, err
 		}
 	}
 
 	stmt.Close()
 
-	return nil
+	resp, err := repository.GetBalance(id)
+
+	if err != nil {
+		return Models.User{}, err
+	}
+
+	return resp, err
 }
 
 func (repository *RepositoryMySql) ReserveAmount(orderId int, userId int, serviceId int, amount float32) error {

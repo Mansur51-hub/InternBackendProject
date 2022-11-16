@@ -6,7 +6,7 @@ import (
 )
 
 type OperationService interface {
-	TopUpMoney(id int, balance float32) error
+	TopUpMoney(id int, balance float32) (Models.User, error)
 	ReserveMoney(orderId int, userId int, serviceId int, amount float32) error
 	WriteOffFromTheReservedMoney(orderId int, userId int, serviceId int, amount float32) error
 	GetMoneyAmount(id int) (Models.User, error)

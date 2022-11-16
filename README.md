@@ -61,6 +61,14 @@ date date not null
 ![image](https://user-images.githubusercontent.com/72014699/202287737-c7165b70-f557-4c6f-862b-e60a9edf3b31.png)
 
 
+Списать из резерва деньги и добавить данные в отчет:
+
+![image](https://user-images.githubusercontent.com/72014699/202288484-e6985cba-55f2-48d6-aec3-bfc3eef3edd9.png)
+
+
+Проверяем, что таблица с резервацией стала пустой и данные добавились в отчет:
+
+![image](https://user-images.githubusercontent.com/72014699/202288717-03099eb1-934d-40be-abd1-45be6a95965d.png)
 
 
 

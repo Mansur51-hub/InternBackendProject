@@ -31,3 +31,9 @@ service_id int not null,
 amount float not null,
 date date not null
 );
+
+## Методы
+
+| Method | Url | Body | Description |
+-----------------------
+| Get | /balances/ | id | Получить баланс пользователя 

@@ -39,3 +39,4 @@ date date not null
 | Get    | /balances  | id   | Получить баланс пользователя | 
 | Post   | /balances  | id, balance | Пополнить баланс пользователя |
 | Post   | /reservations | order_id, user_id, service_id, amount | Зарезервировать деньги у пользователя |
+| Delete   | /reservations | order_id, user_id, service_id, amount | Списать деньги с резерва и добавить в отчет |

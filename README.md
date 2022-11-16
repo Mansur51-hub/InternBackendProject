@@ -1,6 +1,6 @@
 # InternBackendProject
 
-# Команды для создания таблиц:
+## Команды для создания таблиц:
 
 create table users ( 
 id int primary key unique not null, 

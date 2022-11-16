@@ -6,6 +6,14 @@
 `go get -u github.com/gorilla/mux`
 `go get -u github.com/go-sql-driver/mysql`
 
+В строке 
+func main() {
+	db, err = sql.Open("mysql", "root:1111@tcp(127.0.0.1:3306)/operations")
+  
+Установить значения для вашей бд
+
+db, err = sql.Open("mysql", "<user>:<password>@tcp(127.0.0.1:3306)/<dbname>")
+
 ## Команды для создания таблиц:
 
 create table users ( 

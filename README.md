@@ -36,4 +36,6 @@ date date not null
 
 | Method | Url        | Body | Description |
 | ------ | ---------- | ---- | ----------- |
-| Get    | /balances/ | id   | Получить баланс пользователя | 
+| Get    | /balances  | id   | Получить баланс пользователя | 
+| Post   | /balances  | id, balance | Пополнить баланс пользователя |
+| Post   | /reservations | order_id, user_id, service_id, amount | Зарезервировать деньги у пользователя |

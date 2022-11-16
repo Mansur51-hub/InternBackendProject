@@ -55,6 +55,8 @@ date date not null
 ![image](https://user-images.githubusercontent.com/72014699/202287489-6b4eba01-39b6-4be7-95c8-e5df03729877.png)
 
 
+В табличке reservations появились данные:
+![image](https://user-images.githubusercontent.com/72014699/202287737-c7165b70-f557-4c6f-862b-e60a9edf3b31.png)
 
 
 

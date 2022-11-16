@@ -1,13 +1,19 @@
 package Repository
 
-import "database/sql"
+import (
+	"Microservice/Models"
+	"database/sql"
+)
 
 type Repository interface {
-	topUpBalance(id int, balance float32) error
-	reserveAmount(orderId int, userId int, serviceId int, amount float32) error
-	writeOffFromTheReserveMoney(orderId int, userId int, serviceId int, amount float32) error
-	getBalance(id int) error
-	userExists(id int) (bool, error)
+	TopUpBalance(id int, balance float32) error
+	ReserveAmount(orderId int, userId int, serviceId int, amount float32) error
+	WriteOffFromTheReserveMoney(orderId int) error
+	GetBalance(id int) (Models.User, error)
+	UserExists(id int) (bool, error)
+	OrderReserved(id int) (bool, error)
+	OrderExists(id int) (bool, error)
+	AddToReport(orderId int, userId int, serviceId int, amount float32) error
 }
 
 func NewRepository(db *sql.DB) *RepositoryMySql {

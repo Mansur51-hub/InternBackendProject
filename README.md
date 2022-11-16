@@ -1,5 +1,11 @@
 # InternBackendProject
 
+## Запуск
+
+Нужно установить данные package
+`go get -u github.com/gorilla/mux`
+`go get -u github.com/go-sql-driver/mysql`
+
 ## Команды для создания таблиц:
 
 create table users ( 

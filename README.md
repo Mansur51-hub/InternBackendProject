@@ -34,6 +34,6 @@ date date not null
 
 ## Методы
 
-| Method | Url | Body | Description |
------------------------
-| Get | /balances/ | id | Получить баланс пользователя 
+| Method | Url        | Body | Description |
+| ------ | ---------- | ---- | ----------- |
+| Get    | /balances/ | id   | Получить баланс пользователя | 
